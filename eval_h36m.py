@@ -13,9 +13,9 @@ import os
 import sys
 import scipy.io as sio
 import tensorflow as tf
-config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto()
 config.gpu_options.allow_growth = True
-session = tf.Session(config=config)
+session = tf.compat.v1.Session(config=config)
 from keras.models import load_model
 import numpy as np
 import numpy.matlib
