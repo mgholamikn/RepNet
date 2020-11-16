@@ -1,6 +1,6 @@
 def plot17j(poses, show_animation=False):
     import matplotlib as mpl
-    mpl.use('Qt5Agg')
+    # mpl.use('Qt5Agg')
     import matplotlib.pyplot as plt
     import numpy as np
     import matplotlib.animation as anim
@@ -49,20 +49,22 @@ def plot17j(poses, show_animation=False):
             for xb, yb, zb in zip(Xb, Yb, Zb):
                 ax.plot([xb], [yb], [zb], 'w')
 
-            ax.axis('equal')
+            ax.axis('auto')
             ax.axis('off')
 
             ax.set_title('frame = ' + str(i))
 
             plot_idx += 1
+            print(pose)
 
         # this uses QT5Agg backend
         # you can identify the backend using plt.get_backend()
         # delete the following two lines and resize manually if it throws an error
-        figManager = plt.get_current_fig_manager()
-        figManager.window.showMaximized()
-
-        plt.show()
+        # figManager = plt.get_current_fig_manager()
+        # figManager.window.showMaximized()
+        
+        # plt.show()
+        plt.savefig('Sample.png')
 
     else:
         def update(i):
@@ -101,7 +103,7 @@ def plot17j(poses, show_animation=False):
             for xb, yb, zb in zip(Xb, Yb, Zb):
                 ax.plot([xb], [yb], [zb], 'w')
 
-            plt.axis('equal')
+            plt.axis('auto')
 
         a = anim.FuncAnimation(fig, update, frames=poses.shape[0], repeat=False)
         plt.show()
